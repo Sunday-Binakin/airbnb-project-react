@@ -35,19 +35,37 @@
 // }
 // console.log(greeting('John'))
 
+// import React,{useState} from 'react'
 import React from 'react'
 
-const playGround = () => {
-    const result = React.useState("Yes")
-    console.log(result)
+const PlayGround = () => {
+  let [count, setCount] = React.useState(0);
+  
+
+  const add = () => {
+  setCount(prevCount =>prevCount+1)
+  }
+  const subtract = () => {
+    setCount(prevCount=>prevCount-1   ) 
+  }
   return (
-    <div className='state'>
-        <h1 className='state--title'>Is State important to know</h1>
-        <div className='state--value'>
-            <h1>{result[0]}</h1>
-        </div>
+    <div className='counter'>
+      <button className='counter--minus' onClick={subtract}>-</button>
+      <div className='counter--count'>
+       <h1>{count}</h1>
+      </div>
+      <button className='counter--plus' onClick={add}>+</button>
     </div>
   )
-} 
+  // 5:53:45
+  // return (
+  //   <div className='state'>
+  //     <h1 className='state--title'>Is State important to know</h1>
+  //     <div className='state--value' onClick={handleClick}>
+  //       {/* <h1>{result[0]}</h1> */}
+  //     </div>
+  //   </div>
+  // )
+}
 
-export default playGround
+export default PlayGround
