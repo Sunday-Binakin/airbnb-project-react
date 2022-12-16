@@ -68,7 +68,7 @@
   // )
 //}
 import React from 'react'
-
+ import Star from './Star'
 
 const PlayGround = () => {
 
@@ -80,13 +80,13 @@ const PlayGround = () => {
     isFavorite: false
   })
 
-  let starIcon = contact.isFavorite !== false ? "../images/star-filled.png" : "../images/star.png"
+ 
 
   const toggleFavorite = () => {
     setContact(prevContact => {
       return {
         ...prevContact,
-        isFavorite: !prevContact  .isFavorite
+        isFavorite: !prevContact    .isFavorite
       }
     }
     )
@@ -96,7 +96,8 @@ const PlayGround = () => {
       <article className='card'>
         <img src="../images/user.png" alt="Image" className='card--image' />
         <div className='card--info'>
-          <img src={starIcon} alt="" className='card--favorite' onClick={toggleFavorite} />
+        <Star isFilled={contact.isFavorite} alt="" className='card--favorite' handleClick={toggleFavorite}/>
+          {/* <img src={prop.img.starIcon} alt="" className='card--favorite' onClick={toggleFavorite} /> */}
           <h2 className='card--name'>
             {contact.firstName} {contact.lastName}
           </h2>
