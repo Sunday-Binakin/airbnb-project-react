@@ -1,36 +1,45 @@
-import React from 'react'
-import memeData from '../memeData'
+import React from "react";
+import memeData from "../memeData";
 
 const Meme = () => {
-    const [memeImage, setMemeImage] = React.useState("")
 
-    const getMemeImage = () => {
-        // console.log('clicked')
+//    
 
-        const memesArray = memeData.data.memes; // 100 memes
-        const randomNumber = Math.floor(Math.random() * memesArray.length); // 0 - 99
-        // url of the meme
-        setMemeImage(memesArray[randomNumber].url)
-    }
+  const [meme, setMeme] = React.useState({
+    topText: "",
+    bottomText: "",
+    randomImage: "https://i.imgflip.com/1bij.jpg",
+  });
+const [allMemeImages, setAllMemeImages] = React.useState(memeData);
 
-    return (
-        <main>
-            {/* <p>{url}</p> */}
-            <div className='form'>
+  const getMemeImage = () => {
+    // console.log('clicked')
+    const memesArray = allMemeImages.data.memes; // 100 memes
+    const randomNumber = Math.floor(Math.random() * memesArray.length); // 0 - 99
+    // url of the meme
+    const url = memesArray[randomNumber].url;
+    setMeme(prevMeme =>{
+        return {
+            ...prevMeme,
+            randomImage: url
+        }
+    });
+  };
 
-                <input type="text"
-                    className='form--input'
-                    placeholder='top text' />
-                <input type="text"
-                    className='form--input'
-                    placeholder='bottom text'
-                />
-                <button className='form--button' onClick={getMemeImage}>Get new meme image 😎</button>
-            </div>
-            <br />
-            <img src={memeImage} alt="Meme image" className='meme__image' />
-        </main>
-    )
-}
+  return (
+    <main>
+      {/* <p>{url}</p> */}
+      <div className="form">
+        <input type="text" className="form--input" placeholder="top text" />
+        <input type="text" className="form--input" placeholder="bottom text" />
+        <button className="form--button" onClick={getMemeImage}>
+          Get new meme image 😎
+        </button>
+      </div>
+      <br />
+      <img src={meme.randomImage} alt="Meme image" className="meme__image" />
+    </main>
+  );
+};
 
-export default Meme
+export default Meme;

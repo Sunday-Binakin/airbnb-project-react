@@ -36,27 +36,27 @@
 // console.log(greeting('John'))
 
 // import React,{useState} from 'react'
-import React from 'react'
+// import React from 'react'
 
-const PlayGround = () => {
-  let [count, setCount] = React.useState(0);
+// const PlayGround = () => {
+//   let [count, setCount] = React.useState(0);
   
 
-  const add = () => {
-  setCount(prevCount =>prevCount+1)
-  }
-  const subtract = () => {
-    setCount(prevCount=>prevCount-1   ) 
-  }
-  return (
-    <div className='counter'>
-      <button className='counter--minus' onClick={subtract}>-</button>
-      <div className='counter--count'>
-       <h1>{count}</h1>
-      </div>
-      <button className='counter--plus' onClick={add}>+</button>
-    </div>
-  )
+//   const add = () => {
+//   setCount(prevCount =>prevCount+1)
+//   }
+//   const subtract = () => {
+//     setCount(prevCount=>prevCount-1   ) 
+//   }
+//   return (
+//     <div className='counter'>
+//       <button className='counter--minus' onClick={subtract}>-</button>
+//       <div className='counter--count'>
+//        <h1>{count}</h1>
+//       </div>
+//       <button className='counter--plus' onClick={add}>+</button>
+//     </div>
+//   )
   // 5:53:45
   // return (
   //   <div className='state'>
@@ -66,6 +66,48 @@ const PlayGround = () => {
   //     </div>
   //   </div>
   // )
+//}
+import React from 'react'
+
+
+const PlayGround = () => {
+
+  const [contact, setContact] = React.useState({
+    firstName: "John",
+    lastName: "Doe",
+    phone: "+1 (719) 555-1212",
+    email: "itsmyrealname@example.com",
+    isFavorite: false
+  })
+
+  let starIcon = contact.isFavorite !== false ? "../images/star-filled.png" : "../images/star.png"
+
+  const toggleFavorite = () => {
+    setContact(prevContact => {
+      return {
+        ...prevContact,
+        isFavorite: !prevContact  .isFavorite
+      }
+    }
+    )
+  }
+  return (
+    <main>
+      <article className='card'>
+        <img src="../images/user.png" alt="Image" className='card--image' />
+        <div className='card--info'>
+          <img src={starIcon} alt="" className='card--favorite' onClick={toggleFavorite} />
+          <h2 className='card--name'>
+            {contact.firstName} {contact.lastName}
+          </h2>
+          <p className='card--contact'>{contact.phone}</p>
+          <p className='card--contact'>{contact.email}</p>
+        </div>
+      </article>
+    </main>
+  )
 }
+
+
 
 export default PlayGround
