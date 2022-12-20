@@ -2,21 +2,21 @@ import React from 'react'
 import box from './components/box'
 import BoxComponent from './components/BoxComponent'
 
-function App(props){
+const App = (props) => {
   const [squares, SetSquares] = React.useState(box)
-const styles ={
-  backgroundColor: props.darkMode ? styles.backgroundColor = 'black' : styles.backgroundColor = 'red'
-}
 
-
-  const squareElements =  squares.map(square =>(
-    <BoxComponent on={square.on}  style={styles} key={square.id}/> 
-))
+  const squareElements = squares.map(square => (
+    <BoxComponent on={square.on} key={square.id} />
+  ))
 
   return (
     <main>
-    {squareElements}
-    </main> 
+      {squareElements}
+      <br />
+      <div>it working but.......</div>
+
+      <BoxComponent/>
+    </main>
   )
 }
 export default App
