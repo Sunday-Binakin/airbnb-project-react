@@ -1,7 +1,7 @@
 import React from 'react'
 import box from './components/box'
 import BoxComponent from './components/BoxComponent'
-
+import Forms from './components/Forms'
 const App = (props) => {
   const [squares, SetSquares] = React.useState(box)
 
@@ -22,8 +22,10 @@ const App = (props) => {
       {squareElements}
       <br />
       <div>it working but.......</div>
+      <br />
 
-      <BoxComponent/>
+      {/* <BoxComponent/> */}
+      <Forms/>
     </main>
   )
 }
