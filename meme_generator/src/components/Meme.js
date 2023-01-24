@@ -25,19 +25,44 @@ const [allMemeImages, setAllMemeImages] = React.useState(memeData);
         }
     });
   };
+  // handling changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setMeme(prevMeme => ({
+        ...prevMeme,
+        [name]: value
+    }));
+  }
+
 
   return (
     <main>
       {/* <p>{url}</p> */}
       <div className="form">
-        <input type="text" className="form--input" placeholder="top text" />
-        <input type="text" className="form--input" placeholder="bottom text" />
-        <button className="form--button" onClick={getMemeImage}>
+        <input 
+        type="text" 
+        className="form--input" 
+        placeholder="top text" 
+        value={meme.topText} 
+        onChange={handleChange}
+
+        />
+        <input
+         type="text" 
+        className="form--input"
+         placeholder="bottom text" 
+          value={meme.bottomText} 
+          onChange={handleChange}/>
+        <button 
+        className="form--button"
+         onClick={getMemeImage}>
           Get new meme image 😎
         </button>
       </div>
       <br />
       <img src={meme.randomImage} alt="Meme image" className="meme__image" />
+      <h2 className="meme__top-text">{meme.topText}</h2>
+      <h2 className="meme__bottom-text">{meme.bottomText}</h2>
     </main>
   );
 };
